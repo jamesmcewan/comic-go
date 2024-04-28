@@ -1,20 +1,20 @@
 package main
 
 import (
-	"fmt"
 	"io"
+	"log"
 	"net/http"
 )
 
 func getComics(fullUrl string) []byte {
 	res, err := http.Get(fullUrl)
 	if err != nil {
-		fmt.Println("oh no")
+		log.Fatalln(err)
 	}
-	resBody, err := io.ReadAll(res.Body)
-	if err != nil {
-		fmt.Println("oh no")
-	}
+
+	defer res.Body.Close()
+
+	resBody, _ := io.ReadAll(res.Body)
 
 	return resBody
 }

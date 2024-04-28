@@ -1,8 +1,8 @@
 package main
 
-func getFullUrl(apiKey string) string {
-	url := "https://comicvine.gamespot.com/api/volumes/?api_key="
-	query := "&format=json&sort=name:asc&filter=name:Walking%20Dead"
+func getFullUrl(apiKey string, publisherId string) string {
+	url := "https://comicvine.gamespot.com/api/publisher/"
+	query := "&format=json&sort=name:asc"
 
-	return url + apiKey + query
+	return url + publisherId + "/?api_key=" + apiKey + query
 }
