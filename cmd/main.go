@@ -106,7 +106,6 @@ func main() {
 	const defaultWidth = 20
 	apiKey := getEnv("COMICVINE_KEY")
 	publisherId := os.Args[1]
-	fmt.Println("Searching for Publisher ID:", publisherId)
 	fullURL := getFullUrl(apiKey, publisherId)
 
 	client := http.Client{}
@@ -126,7 +125,6 @@ func main() {
 	defer response.Body.Close()
 
 	if response.StatusCode == http.StatusOK {
-		fmt.Println("Response OK")
 		var comicVineResp ComicVineResponse
 		err := json.NewDecoder(response.Body).Decode(&comicVineResp)
 		if err != nil {
